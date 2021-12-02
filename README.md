@@ -14,11 +14,11 @@ Let's set the scene. Your scientist on a distant planet, finding himself in the 
 - Instructions
 - A controls layout
 
-[WireFrame Link](https://wireframe.cc/Jm5Co1)
-
 #### Additional Technologies:
 - Canvas API
 - Webpack
+
+[WireFrame Link](https://wireframe.cc/Jm5Co1)
 
 ### Implementation Timeline:
 - #### Weekend
