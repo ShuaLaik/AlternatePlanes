@@ -1,0 +1,37 @@
+/*!*************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/sass-loader/dist/cjs.js!./src/index.scss ***!
+  \*************************************************************************************************************************************/
+h1 {
+  color: blue;
+  font-size: 300%;
+  padding: 3%;
+  display: inline;
+  position: relative;
+  top: 10px;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Kanit", sans-serif;
+}
+
+#credits {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
+#credits li a {
+  padding: 5px;
+  text-decoration: none;
+}
+
+#credits li {
+  font-size: 120%;
+}
+
+#canvas {
+  border: 1px solid black;
+}

@@ -1,0 +1,45 @@
+{
+  "name": "js-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  
+  
+  
+  
+  
+  
+  
+  
+  "browserslist": [
+    "defaults"
+  ],
+  "scripts": {
+    "watch": "webpack --watch --mode=development",
+    "build": "webpack --mode=production"
+  }, 
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShuaLaik/AlternatePlanes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShuaLaik/AlternatePlanes/issues"
+  },
+  "homepage": "https://github.com/ShuaLaik/AlternatePlanes#readme",
+  "dependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-loader": "^8.2.3",
+    "core-js": "^3.19.2",
+    "css-loader": "^6.5.1",
+    "mini-css-extract-plugin": "^2.4.5",
+    "regenerator-runtime": "^0.13.9",
+    "sass": "^1.44.0",
+    "sass-loader": "^12.3.0",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1"
+  }
+}
