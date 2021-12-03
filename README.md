@@ -36,3 +36,9 @@ Let's set the scene. Your scientist on a distant planet, finding himself in the 
 - #### Thursday
     - Have game uploaded to heroku in the morning
 
+# Bonus Features
+
+Theres many directions I can see this project going in. Some examples of possibly implemented featrues are:
+- weapons & enemies
+- slow time
+- and much much more
