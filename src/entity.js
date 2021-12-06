@@ -1,20 +1,5 @@
 class Entity {
-    constructor(ctx){
-        x: 400;
-        y: 450;
-        w: 50;
-        h: 50;
-        vx: 10;
-        sx: 10;
-        vy: 0;
-        sy: 0;
-        color: 'red';
-        ctx: ctx;
-        draw: () => {
-            
-        }
-    }
-
+    
     
 }
 
