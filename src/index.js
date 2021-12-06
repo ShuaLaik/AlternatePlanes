@@ -1,7 +1,6 @@
 // const Entity = require("./entity");
 // const Game = require("./game");
 // const GameView = require("./game_view");
-
 const Game = require("./game");
 const GameView = require("./game_view");
 
@@ -14,28 +13,37 @@ document.addEventListener("DOMContentLoaded", () => {
     gameview.start();
 
     document.addEventListener('keydown', (event) => {
+        
         const keyname = event.key;
-        console.log(keyname);
         if (keyname === 'd') {
-            gameview.game.player.x += 10;
+            
+            gameview.game.player.runRight();
+            gameview.game.player.x += 25;
         } else if (keyname === 'a') {
-            gameview.game.player.x -= 10;
+            gameview.game.player.x -= 25;
+            gameview.game.player.runLeft();
         } else if (keyname === ' ') {
             // gameview.game.player.jump();
             // window.cancelAnimationFrame(ent.h);
-            // ent.h = window.requestAnimationFrame(ent.jump);
+            // ent.h = window.requestAnimationFrame(ent.jump); 
+        } else if (keyname === 'q') {
+            gameview.game.hidden ? gameview.game.hidden = false : gameview.game.hidden = true;
         }
     })
 
     document.addEventListener('keyup', (event) => {
         const keyname = event.key;
         if (keyname === 'd') {
+            gameview.game.player.still = true;
+            gameview.game.player.standStill();
             // ent.stop = true;
             // ent.h = cancelAnimationFrame(ent.h);
             // ent.moving = false;
             // ent.h = window.requestAnimationFrame(ent.standstill);
             return;
         } else if (keyname === 'a') {
+            gameview.game.player.still = true;
+            gameview.game.player.standStill();
             // ent.stop = true;
             // ent.h = cancelAnimationFrame(ent.h);
             // ent.moving = false;

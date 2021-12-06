@@ -35,5 +35,6 @@ body {
 #canvas {
   border: 1px solid black;
   background-image: url("../imgs/backgrnd2.jpeg");
+  background-size:contain;
   background-position: bottom;
 }

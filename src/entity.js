@@ -1,25 +1,44 @@
 class Entity {
-    constructor(x, y, w, q, ctx) {
+    constructor(x, y, w, h, ctx) {
         this.p = 1;
         this.ctx = ctx;
         this.x = x;
         this.w = w;
-        this.q = q;
+        this.h = h;
         this.y = y;
-        this.stop = true;
-        this.moving = true;
-        this.h;
         this.currjump = 400;
         this.image = new Image();
-        this.image.src = `../imgs/Idle (1).png`;
+        this.image.src = `../imgs/Idle (${this.p}).png`;
     }
 
     draw(ctx) {
-        this.image.onload = function () {
-            this.ctx.drawImage(this.image, this.x, this.y, 115, 115);
-        }
+        this.ctx.drawImage(this.image, this.x, this.y, this.w, this.h);
+    }
 
+    runRight(){
+        this.p += 1;
+        if (this.p > 8) {
+            this.p = 1;
+        }
+        this.image.src = `../imgs/Run (${this.p}).png`;
+    }
+
+    standStill(){
+        this.p += 1;
+        if (this.p > 10) {
+            this.p = 1;
+        }
+        console.log(this.p);
+        this.image.src = `../imgs/Idle (${this.p}).png`;
         
+    }
+
+    runLeft(){
+        this.p += 1;
+        if (this.p > 8) {
+            this.p = 1;
+        }
+        this.image.src = `../imgs/Run (${this.p})l.png`;
     }
 //     standstill = function () {
 //     // this.ctx.clearRect(0, 0, canvas.width, canvas.height);
