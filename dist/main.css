@@ -8,6 +8,14 @@ h1 {
   display: inline;
   position: relative;
   top: 10px;
+  
+}
+
+#title {
+  height: 50%;
+  width: 50%;
+  padding: 1%;
+
 }
 
 body {
@@ -15,12 +23,21 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: "Kanit", sans-serif;
+  background-image: url("../imgs/back.gif");
 }
 
 #credits {
   display: flex;
+  position: relative;
+  top: 40px;
+  border: 2px darkgrey;
   flex-direction: row;
+  padding: 10px;
   list-style: none;
+  background-color: white;
+  border-radius: 25%;
+
+  
 }
 
 #credits li a {
@@ -33,8 +50,7 @@ body {
 }
 
 #canvas {
-  border: 1px solid black;
+  border: 4px solid darkgrey;
   background-image: url("../imgs/backgrnd2.jpeg");
-  background-size:contain;
-  background-position: bottom;
+  /* background-position: bottom; */
 }

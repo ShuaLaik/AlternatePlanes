@@ -9,9 +9,7 @@ class Game {
         this.level = this.level.lev()
         this.hidden = false;
         this.fall = .05;
-        // console.log(this.level.lev());
-        // this.objs_to_render.concat(this.level.lev());
-        
+        this.j = 40;
     }
 
     static createPlayer(obj, x, y, w, h, ctx){
@@ -22,7 +20,21 @@ class Game {
     draw(ctx) {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        this.gravity();
+        if (this.player.jump === true){
+            this.jump()
+        } else {
+            this.gravity();
+        }
+        if (this.player.left){
+            this.player.runLeft();
+            this.player.x -= 5;
+        } else if (this.player.right){
+            this.player.runRight();
+            this.player.x += 5;
+        } else {
+            this.player.standStill();
+        }
+        
         this.objs_to_render.forEach((e) => {
             e.draw(ctx)
         })
@@ -35,6 +47,20 @@ class Game {
             ctx.stroke();
         }
     }
+
+    jump(){
+        this.player.jumpAnimation();
+        let old = this.player.x;
+        this.player.y -= this.j;
+        console.log(this.j)
+        console.log(this.player.y);
+        this.j *= .75;
+        this.j += .25;
+        if (this.j < 5) {
+            this.j = 40;
+            this.player.jump = false;
+        }
+       }
 
     gravity(){
         let arr = this.level.filter(e => (e.hidden !== true || this.hidden === false) && e.y > this.player.y);
@@ -50,7 +76,7 @@ class Game {
                 if (this.player.y > 450) {
                     setTimeout(() => {
                         this.player.x -= 60;
-                        this.player.y -= 200;
+                        this.player.y -= 400;
                     }, );
                 }
 
@@ -62,8 +88,6 @@ class Game {
 
         if (this.player.y > obj.y - 109) {
             if (this.player.x > obj.x -60 && this.player.x < obj.x + 20) {
-                console.log(obj);
-                console.log(this.player.x)
                 return true;
             } else {
                 return false;

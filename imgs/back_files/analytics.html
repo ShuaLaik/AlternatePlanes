@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- saved from url=(0119)https://assets.tumblr.com/analytics.html?_v=9f5febfd57a8a649c598d888f2d9e062#https://forever-with-sexay-cats.tumblr.com -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Tumblr</title>
+        
+        <meta name="robots" content="noindex, nofollow">
+        <link rel="icon" href="https://assets.tumblr.com/images/favicons/favicon.ico?_v=a891a6916b745ae20be499f98db2f875" type="image/gif">
+
+        <script async="" src="./cs.js"></script><script type="text/javascript">
+            function log(message) {
+                if (debug) console.log(message);
+            }
+
+            var user_logged_in = 'No';
+            var blog_is_nsfw = 'No';
+            var parent_origin = location.hash.slice(1);
+
+            window.parent.postMessage('analytics_iframe_loaded', parent_origin);
+
+            var Tumblr = {
+                Analytics: {
+                    get_cookie: function (name){
+                        return new RegExp(name+"=([^;]+)").test(unescape(document.cookie)) ? RegExp.$1 : null;
+                    },
+
+                    set_cookie: function(name, value, expire_seconds, opts) {
+                        opts = opts || {};
+                        var ex_date = new Date();
+                        var path = opts.path ? opts.path : '/';
+                        var is_secure = opts.is_secure ? true : false;
+                        var domain = opts.domain ? opts.domain : '';
+                        ex_date.setTime(ex_date.getTime() + (expire_seconds * 1000));
+
+                        document.cookie = name + "=" + escape(value)
+                                + ((expire_seconds == null) ? "" : ";expires=" + ex_date.toGMTString())
+                                + ';path=' + path
+                                + ((is_secure === false) ? '' : ';secure')
+                                + ((domain === '') ? '' : ';domain=' + domain);
+                    },
+
+                    unset_cookie: function(name) {
+                        this.set_cookie(name, '', -1);
+                    },
+
+                    create_post_message_listener: function() {
+                        // http://davidwalsh.name/window-iframe
+                        // Create IE + others compatible event handler
+                        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+                        var eventer = window[eventMethod];
+                        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+
+                        // Listen to message from child window
+                        eventer(messageEvent,function(e) {
+                            var message = (e.data && e.data.split) ? e.data.split(';') : '';
+                            Tumblr.Analytics.handle_post_message(message, e.origin);
+                        }, false);
+                    },
+
+                    handle_post_message: function(message, origin) {
+                        switch (message[0]) {
+                            case 'openInMobileApp':
+                                var post_id = parseInt(message[1]),
+                                    custom_event = ['_trackEvent', 'Mobile', 'Clicked', 'Open in Mobile App', post_id ];
+
+
+                                parent.postMessage('openInMobileAppSuccess' + ';' + post_id, message[2]);
+                                break;
+
+                            case 'enable_comscore':
+                            case 'tick_comscore':
+                                var url = message[1];
+                                log({ c1: "7", c2: 15742520, c4: url });
+                                log({ c1: "2", c2: 15742520, c4: url });
+                                if (typeof(COMSCORE) !== 'undefined') {
+                                    COMSCORE.beacon({ c1: '7', c2: '15742520', c4: url });
+                                    COMSCORE.beacon({ c1: '2', c2: '15742520', c4: url });
+                                } else {
+                                  _comscore.push({ c1: "7", c2: 15742520, c4: url });
+                                  _comscore.push({ c1: "2", c2: 15742520, c4: url });
+                                  var s   = document.createElement("script"),
+                                      el  = document.getElementsByTagName("script")[0];
+                                  s.async = true;
+                                  s.src = (document.location.protocol == "https:" ? "https://sb" : "http://b") + ".scorecardresearch.com/c2/15742520/cs.js";
+                                  el.parentNode.insertBefore(s, el);
+                                }
+                                break;
+                            case 'tick_related_post':
+                                // temporary disabled
+                                break;
+                        }
+                    },
+
+                    get_url_var: function(get_var, url) {
+                        url = url || window.location.href
+
+                        var vars = {};
+                        url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                            vars[key] = value;
+                        });
+
+                        if (get_var) {
+                            return vars[get_var];
+                        } else {
+                            return vars;
+                        }
+                    },
+                }
+            };
+
+            var debug     = false
+              , _comscore = _comscore || [];
+
+            Tumblr.Analytics.create_post_message_listener();
+        </script>
+        <noscript><img src="https://sb.scorecardresearch.com/p?c1=7&amp;c2=15742520&amp;cv=2.0&amp;cj=1" /></noscript>
+        <noscript><img src="https://sb.scorecardresearch.com/p?c1=2&amp;c2=15742520&amp;cv=2.0&amp;cj=1" /></noscript>
+    </head>
+    <body>
+    
+
+</body></html>
