@@ -14,7 +14,6 @@ class GameView {
         this.render();
     }
 
-
     render(time){
         const td = time - this.time;
         this.game.draw(this.ctx);

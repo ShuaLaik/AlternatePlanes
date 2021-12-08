@@ -9,6 +9,7 @@ class Entity {
         this.left = false;
         this.right = false;
         this.jump = false;
+        this.changePlane = false;
         this.image = new Image();
         this.image.src = `../imgs/Idle (${this.p}).png`;
     }
@@ -47,15 +48,17 @@ class Entity {
         if (this.p > 10) {
             this.p = 1;
         }
-        this.image.src = `../imgs/Jump (${this.p})l.png`;
+        this.image.src = `../imgs/Jump (${this.p}).png`;
     }
 
     changePlaneAnimation(){
         this.p += 1;
         if (this.p > 7){
             this.p = 1;
+            this.changePlane = false;
         }
-        this.image.src = `../imgs/Melee (${this.p})l.png`;
+        console.log(this.p);
+        this.image.src = `../imgs/Melee (${this.p}).png`;
     }
 }
 

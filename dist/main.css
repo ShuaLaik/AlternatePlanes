@@ -8,14 +8,12 @@ h1 {
   display: inline;
   position: relative;
   top: 10px;
-  
 }
 
 #title {
   height: 50%;
   width: 50%;
   padding: 1%;
-
 }
 
 body {
@@ -34,23 +32,29 @@ body {
   flex-direction: row;
   padding: 10px;
   list-style: none;
-  background-color: white;
+  background-color: black;
   border-radius: 25%;
-
-  
 }
 
 #credits li a {
   padding: 5px;
   text-decoration: none;
+  color: darkgrey;
 }
 
 #credits li {
   font-size: 120%;
+  color: darkgrey;
 }
 
 #canvas {
   border: 4px solid darkgrey;
   background-image: url("../imgs/backgrnd2.jpeg");
   /* background-position: bottom; */
+}
+
+.popup {
+  display: flex;
+  position: fixed;
+  top: 100%;
 }
