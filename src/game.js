@@ -8,9 +8,11 @@ class Game {
         this.objs_to_render = [];
         this.levels = Levels.allLevels();
         this.currLevel = 0;
-        this.hidden = false;
+        this.hidden = -1;
         this.fall = .05;
         this.j = 60;
+        this.tickCount = 0
+        this.ticking = true;
         this.faded = false;
         this.fadeIn = false;
         this.fadeamount = 0.05;
@@ -25,19 +27,26 @@ class Game {
 
     draw(ctx) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+        if (this.player.y > 1000){
+            this.dead(ctx);
+            if (this.ticker(235)){
+                return false;
+            };
+        }
+        else {
         this.player.y += 15;
-        if ((this.player.x > 900 && this.currLevel < this.levels.length - 1) || (this.currLevel === 0 && this.player.x < 0)) {
+        if ((this.player.x > 850 && this.currLevel < this.levels.length - 1) || (this.currLevel === 0 && this.player.x < 2)) {
             this.currLevel += 1;
             this.player.x = 0;
             this.player.y = 200;
             this.levEnd = -200;
-            this.hidden = false;
+            this.hidden = -1;
         } else if (this.player.x < 0 && this.currLevel !== 1) {
             this.currLevel -= 1;
             this.player.x = 5;
             this.player.y = 200;
             this.levEnd = -200;
-            this.hidden = false;
+            this.hidden = -1;
         }  
         if (this.player.jump === true){
             this.jump()
@@ -45,15 +54,17 @@ class Game {
         } else {
             this.gravity();
         }
-        this.playerMove();
+            this.playerMove();
+        };
         this.levels[this.currLevel].concat(this.player).forEach((e) => {
             e.draw(ctx, this.hidden)
         })
-        if (this.hidden === true) {
+        if (this.hidden === 1) {
             ctx.fillStyle = 'rgba(22,60,210,0.1)';
             ctx.fillRect(0, 0, 900, 506, 0.1)
             ctx.stroke();
         }
+        return true;
     }
 
     playerMove() {
@@ -73,6 +84,21 @@ class Game {
         }
     }
 
+    dead(ctx){
+        ctx.fillStyle = "red";
+        ctx.font = "300px Ariel";
+        ctx.fillText("DEAD", 30, 300);
+    }
+
+    ticker(max){
+        this.tickCount++;
+        console.log(this.tickCount);
+        if (this.tickCount === max){
+            return true;
+        } else {
+            return false;
+        }
+    }
     jump(){
         this.player.y -= this.j;
         this.j *= .75;
@@ -85,7 +111,7 @@ class Game {
     }
 
     gravity(){
-        let arr = this.levels[this.currLevel].filter(e => (e.hidden !== true || this.hidden === true) && e.y > this.player.y);
+        let arr = this.levels[this.currLevel].filter(e => this.ishidden(e));
         arr.forEach((e) => {
             if (this.isCollisionFall(e)) {
                         this.player.y = e.y - 110;
@@ -103,9 +129,17 @@ class Game {
         })
     }
 
-    isCollisionFall(obj){
+    ishidden(e){
+        if ((e.hidden === 0) || e.hidden === this.hidden ) {
+            return true
+        } else {
+            return false
+        }
+    }
 
-        if (this.player.y > obj.y - 109) {
+    isCollisionFall(obj){
+        //(Util.between(obj.y - 109, obj.y, this.player.y))
+        if (Util.between(obj.y - 109, obj.y, this.player.y)) {
             if (Util.between(obj.x - 60, obj.x + 20, this.player.x )) {
                 return true;
             } else {

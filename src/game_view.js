@@ -14,9 +14,11 @@ class GameView {
         this.render();
     }
 
-    render(time){
-        const td = time - this.time;
-        this.game.draw(this.ctx);
+    render(){
+        if (!this.game.draw(this.ctx)){
+            this.game = new Game;
+            Game.createPlayer(this.game, 300, 200, 115, 115, this.ctx);
+        };
         window.requestAnimationFrame(this.render.bind(this));
     }
 }

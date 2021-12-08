@@ -6,13 +6,13 @@ class Sound {
         this.music.setAttribute("preload", "auto");
         this.music.setAttribute("controls", "none");
         this.music.style.display = "none";
-        this.music.volume = .01;
+        this.music.volume = .02;
         document.body.appendChild(this.music);
+        this.musicPlaying = false;
 
     }
 
     playMusic(){
-        this.music.muted = true;
         this.music.play();
     }
 

@@ -1,13 +1,15 @@
 const Game = require("./game");
 const GameView = require("./game_view");
 const Sound = require("./scripts/music");
+const PopUp = require("./scripts/popup");
 
 document.addEventListener("DOMContentLoaded", () => {
+    const pop = new PopUp;
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
+    let musicPlaying = true;
     const sound = new Sound;
     const game = new Game;
-    sound.playMusic();
     const gameview = new GameView(game, ctx);
     
     gameview.start();
@@ -23,9 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (keyname === ' ') {
             gameview.game.player.jump = true;
         } else if (keyname === 'q' || keyname === 'Q') {
-            gameview.game.hidden ? gameview.game.hidden = false : gameview.game.hidden = true;
+            gameview.game.hidden === 1 ? gameview.game.hidden = -1 : gameview.game.hidden = 1;
             gameview.game.player.changePlane = true;
             gameview.game.player.p = 1;
+        } else if (keyname === 'm' || keyname === 'M') {
+            if (this.musicPlaying === false){
+                sound.playMusic();
+                this.musicPlaying = true;
+            } else {
+                this.musicPlaying = false;
+                sound.stopMusic();
+            }
         }
     })
 

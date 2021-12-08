@@ -14,7 +14,7 @@ class StillBlock {
     }
 
     draw(ctx, hide) {
-        if (!hide && this.hidden) {
+        if (hide !== this.hidden && this.hidden !== 0){
             return;
         } else {
             ctx.drawImage(this.image, this.x, this.y, this.w, this.h);

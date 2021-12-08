@@ -54,10 +54,13 @@ body {
   /* background-position: bottom; */
 }
 
-.popup {
+#popup {
     display: flex;
     position: fixed;
-    top: 100%;
+    top: 30%;
+    background-color: darkgrey;
+    border: 4px solid black;
+    
 }
 
 #left {
