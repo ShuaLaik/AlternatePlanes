@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     document.addEventListener('keydown', (event) => {
-        
         const keyname = event.key;
         console.log(`Keydown => ${keyname}`);
         if (keyname === 'd' || keyname === 'D') {
@@ -35,8 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
             gameview.game.player.p = 1;
         } else if (keyname === 'm' || keyname === 'M') {
             if (this.musicPlaying === false){
-                sound.playMusic();
                 this.musicPlaying = true;
+                sound.playMusic();
             } else {
                 this.musicPlaying = false;
                 sound.stopMusic();
@@ -56,7 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
             gameview.game.player.still = true;
             return;
         }
-})
+    })
 
 
 })

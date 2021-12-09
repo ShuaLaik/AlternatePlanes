@@ -99,6 +99,7 @@ class Game {
             return false;
         }
     }
+    
     jump(){
         this.player.y -= this.j;
         this.j *= .75;
@@ -117,14 +118,6 @@ class Game {
                         this.player.y = e.y - 110;
                         this.fall = 1;
                     return;
-            } else {
-            //     this.player.y += this.fall;
-            //     this.fall *= 1;
-            //     if (this.player.y > 450) {
-            //             this.player.x -= 60;
-            //             this.player.y -= 400;
-            //     }
-            //     console.log(this.player.y)
             }
         })
     }
@@ -138,7 +131,6 @@ class Game {
     }
 
     isCollisionFall(obj){
-        //(Util.between(obj.y - 109, obj.y, this.player.y))
         if (Util.between(obj.y - 109, obj.y, this.player.y)) {
             if (Util.between(obj.x - 60, obj.x + 20, this.player.x )) {
                 return true;

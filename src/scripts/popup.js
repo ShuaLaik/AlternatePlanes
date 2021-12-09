@@ -43,9 +43,6 @@ class PopUp {
         this.p.innerText = "Alone on a distant planet, not earth, it is much less hospitable then once thought. The landscape has been ravaged by climate change, definitely not earth, and now it's time to get back to your ship! Only one issue, the landscape is jagged and ripped apart, by climate change, that's not on Earth. Good thing you have you're PLANE SHIFTER, a device that allows you to switch realities to fill holes and find you way.Can you make it back? Click me to find out!"
         this.r.append(this.h, this.p);
         this.form = document.createElement('form')
-        // this.ul = document.createElement('ul');
-
-        // this.section.appendChild(this.h);
     }
 
     destroy(){
