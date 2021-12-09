@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else if (keyname === 'a' || keyname === 'A') {
             gameview.game.player.left = true;
         } else if (keyname === ' ') {
+            event.preventDefault();
             gameview.game.player.jump = true;
         } else if (keyname === 'q' || keyname === 'Q') {
             gameview.game.hidden === 1 ? gameview.game.hidden = -1 : gameview.game.hidden = 1;
