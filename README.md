@@ -4,9 +4,6 @@
 
 Let's set the scene. Your scientist on a distant planet, finding himself in the trecherous situation of being seperated from his ship. The planet is vastly unsafe, but you have an advantage. In your disposal is your plane shifter, capable of shifting you to an alternate reality where obstacles may be passed. So, do you have what it takes to make it back to your ship?
 
-- Canvas API
-
-
 ### Controls
 - A - Move Left
 - D - Move Right
@@ -15,52 +12,39 @@ Let's set the scene. Your scientist on a distant planet, finding himself in the 
 
 ##GamePlay
 
-![MainScreenshot](imgs/readme/Screen Shot 2021-12-09 at 10.31.11 AM.png)
+![MainScreenshot](mainscreen.png)
 
-Users must find there way through an array of puzzle levels to make it to the otherside. Some parts of the level may only appear in one universe vs the other. User's must use this to their advantage and navigate the level.
+Users must find there way through an array of puzzle levels to make it to the otherside. Some parts of the level may only appear in one universe vs the other. User's must use this to their advantage and navigate the level. A slight blue tint is used to differenciate between the two.
 
 For example, these are of the same level:
+![altexone](altexone.png)
 
+![altextwo](altextwo.png)
 
+This was achieved by structuring the level blocks with a 'this.hidden' attribute, set to eitehr '1', '-1', or '0'. The level takes these in as an array and filters out which to show using the following: 
 
+`if ((e.hidden === 0) || e.hidden === this.hidden ) {...}`
 
+`this.hidden` refers to an attribute on the game class that changes between `1` and `-1` whenever the User presses Q.
+
+As far as level structuring goes, it's simple lines of code that build up each block:
+
+`this.level.push(new StillBlock(0, 400, 60, 60, 2, 0));`
+
+The arguments passed in represent:
+
+`X Coordinate`, `Y Coordinate`, `Width`, `Height`, `Tile Image`, `Hidden Valie`
 
 #### In Alternate Planes, users will be able to:
 - Navigate levels and advance towards end goal
 - Alternate between `realities` to solve challenges
-- have a simple pause menu, allowing you to restart a level
-- Eventually reach `'the ship'`, or the overall end goal
 - Have fun :)
-#### In addition, this project will include:
-- A ReadMe file
-- Instructions
-- A controls layout
-
-#### Additional Technologies:
+#### Technologies:
 - Canvas API
 - Webpack
 
-[WireFrame Link](https://wireframe.cc/Jm5Co1)
-
-### Implementation Timeline:
-- #### Weekend
-    - Have something on the page, and a character that can move left and right
-    - if possible, also implement jump physics and begin work on reality shifting
-- #### Monday
-    - fully implement shifting realities, work on first level
-    - (end goal is 3 levels, will push for more if possible)
-- #### Tuesday
-    - Work on levels, endgame, etc
-- #### Wednesday
-    - Work on overall neatness of page
-    - Bugfix
-    - Finish any unfinished implementation
-- #### Thursday
-    - Have game uploaded to heroku in the morning
-
-# Bonus Features
-
-Theres many directions I can see this project going in. Some examples of possibly implemented featrues are:
+# Features to come
 - weapons & enemies
 - slow time
-- and much much more
+- more levels
+
