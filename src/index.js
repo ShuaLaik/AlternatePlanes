@@ -19,9 +19,8 @@ document.addEventListener("DOMContentLoaded", () => {
         pop.section.style.display = "none";
     })
 
-    document.addEventListener('keydown', (event) => {
+    document.addEventListener('keydown', (event) => { //detects all key down events
         const keyname = event.key;
-        console.log(`Keydown => ${keyname}`);
         if (keyname === 'd' || keyname === 'D') {
             gameview.game.player.right = true;
         } else if (keyname === 'a' || keyname === 'A') {
@@ -43,9 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     })
 
-    document.addEventListener('keyup', (event) => {
+    document.addEventListener('keyup', (event) => { //detects all key up events
         const keyname = event.key;
-        console.log(`Keyup => ${keyname}`);
         if (keyname === 'd' || keyname === 'D') {
             gameview.game.player.right = false;
             gameview.game.player.still = true;

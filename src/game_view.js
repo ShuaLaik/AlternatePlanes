@@ -9,13 +9,13 @@ class GameView {
         Game.createPlayer(this.game, 300, 100, 115, 115, this.ctx);
     }
 
-    start(){
+    start(){ //starts the game
         this.time = 0;
         this.render();
     }
 
-    render(){
-        if (!this.game.draw(this.ctx)){
+    render(){ //runs the main game loop
+        if (!this.game.draw(this.ctx)){ //renders the game and checks for game over event - resets game if neccesary
             this.game = new Game;
             Game.createPlayer(this.game, 300, 200, 115, 115, this.ctx);
         };

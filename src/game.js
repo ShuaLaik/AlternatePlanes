@@ -19,13 +19,13 @@ class Game {
         this.levEnd = 1;
     }
 
-    static createPlayer(obj, x, y, w, h, ctx){
+    static createPlayer(obj, x, y, w, h, ctx){//creates a new player object
         obj.player = new Entity(x, y, w, h, ctx);
         obj.objs_to_render.push(obj.player)
         obj.prevx = obj.player.x;
     }
 
-    draw(ctx) {
+    draw(ctx) {//overall renderloop
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         if (this.player.y > 1000){
             this.dead(ctx);
@@ -34,9 +34,9 @@ class Game {
             };
         }
         else {
-        this.player.y += 15;
+        this.player.y += 15;//gravity
         if ((this.player.x > 850 && this.currLevel < this.levels.length - 1) || (this.currLevel === 0 && this.player.x < 2)) {
-            this.currLevel += 1;
+            this.currLevel += 1;//this checks if the player ran off screen and takes them to previous or next level accordingly
             this.player.x = 0;
             this.player.y = 200;
             this.levEnd = -200;
@@ -67,7 +67,7 @@ class Game {
         return true;
     }
 
-    playerMove() {
+    playerMove() { //implements player move logic
         if (this.player.left) {
             this.player.runLeft();
             this.prevx = this.player.x;
@@ -84,13 +84,13 @@ class Game {
         }
     }
 
-    dead(ctx){
+    dead(ctx){ //renders dead on screen
         ctx.fillStyle = "red";
         ctx.font = "300px Ariel";
         ctx.fillText("DEAD", 30, 300);
     }
 
-    ticker(max){
+    ticker(max){ //utiltiy to wait a certain amount of time before completeing an action
         this.tickCount++;
         console.log(this.tickCount);
         if (this.tickCount === max){
@@ -99,8 +99,8 @@ class Game {
             return false;
         }
     }
-    
-    jump(){
+
+    jump(){ //implements jump physics
         this.player.y -= this.j;
         this.j *= .75;
         this.j += .25;
@@ -111,7 +111,7 @@ class Game {
         }
     }
 
-    gravity(){
+    gravity(){//filters through blocks and checks collision with those blocks
         let arr = this.levels[this.currLevel].filter(e => this.ishidden(e));
         arr.forEach((e) => {
             if (this.isCollisionFall(e)) {
@@ -122,7 +122,7 @@ class Game {
         })
     }
 
-    ishidden(e){
+    ishidden(e){ //checks if a block is hidden
         if ((e.hidden === 0) || e.hidden === this.hidden ) {
             return true
         } else {
@@ -130,7 +130,7 @@ class Game {
         }
     }
 
-    isCollisionFall(obj){
+    isCollisionFall(obj){ //checks if a block is being collided with
         if (Util.between(obj.y - 109, obj.y, this.player.y)) {
             if (Util.between(obj.x - 60, obj.x + 20, this.player.x )) {
                 return true;
