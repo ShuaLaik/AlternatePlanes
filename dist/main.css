@@ -53,10 +53,6 @@ body {
   /* background-position: bottom; */
 }
 
-#canvas:hover {
-  border: 4px solid ivory;
-}
-
 #popup {
   display: flex;
   align-items: center;
@@ -83,7 +79,7 @@ h3 {
 
 h5 {
   background: black;
-  color: lightblue;
+  color: ivory;
   border-radius: 9%;
   padding-left: 6px;
   padding-right: 6px;
