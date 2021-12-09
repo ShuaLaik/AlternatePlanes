@@ -14,6 +14,11 @@ document.addEventListener("DOMContentLoaded", () => {
     
     gameview.start();
 
+    pop.section.addEventListener('click', (event) => {
+        console.log("click")
+        pop.section.style.display = "none";
+    })
+
     document.addEventListener('keydown', (event) => {
         
         const keyname = event.key;
