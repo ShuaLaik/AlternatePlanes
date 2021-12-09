@@ -57,7 +57,6 @@ class Entity {
             this.p = 1;
             this.changePlane = false;
         }
-        console.log(this.p);
         this.image.src = `./imgs/Melee (${this.p}).png`;
     }
 }

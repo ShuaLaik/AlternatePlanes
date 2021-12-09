@@ -5,7 +5,6 @@ class Fade {
 
     draw(ctx){
         if (this.faded === true) {
-            console.log(this.faded);
             this.fadeout();
             ctx.fillStyle = `rgba(0,0,0,${this.fadeamount})`;
             ctx.fillRect(0, 0, 900, 506, 0.05)

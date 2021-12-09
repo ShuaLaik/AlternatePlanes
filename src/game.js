@@ -77,7 +77,6 @@ class Game {
             this.prevx = this.player.x;
             this.player.x += 5;
         } else if (this.player.changePlane) {
-            console.log(true);
             this.player.changePlaneAnimation();
         } else {
             this.player.standStill();
@@ -92,7 +91,6 @@ class Game {
 
     ticker(max){ //utiltiy to wait a certain amount of time before completeing an action
         this.tickCount++;
-        console.log(this.tickCount);
         if (this.tickCount === max){
             return true;
         } else {

@@ -44,12 +44,6 @@ class PopUp {
         this.r.append(this.h, this.p);
         this.form = document.createElement('form')
     }
-
-    destroy(){
-        console.log('p');
-        this.section.remove(this.l);
-        this.section.remove(this.r);
-    }
 }
 
 
