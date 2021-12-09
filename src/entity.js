@@ -23,7 +23,7 @@ class Entity {
         if (this.p > 8) {
             this.p = 1;
         }
-        this.image.src = `../imgs/Run (${this.p}).png`;
+        this.image.src = `./imgs/Run (${this.p}).png`;
     }
 
     standStill(){
@@ -31,7 +31,7 @@ class Entity {
         if (this.p > 10) {
             this.p = 1;
         }
-        this.image.src = `../imgs/Idle (${this.p}).png`;
+        this.image.src = `./imgs/Idle (${this.p}).png`;
         
     }
 
@@ -40,7 +40,7 @@ class Entity {
         if (this.p > 8) {
             this.p = 1;
         }
-        this.image.src = `../imgs/Run (${this.p})l.png`;
+        this.image.src = `./imgs/Run (${this.p})l.png`;
     }
 
     jumpAnimation(){
@@ -48,7 +48,7 @@ class Entity {
         if (this.p > 10) {
             this.p = 1;
         }
-        this.image.src = `../imgs/Jump (${this.p}).png`;
+        this.image.src = `./imgs/Jump (${this.p}).png`;
     }
 
     changePlaneAnimation(){
@@ -58,7 +58,7 @@ class Entity {
             this.changePlane = false;
         }
         console.log(this.p);
-        this.image.src = `../imgs/Melee (${this.p}).png`;
+        this.image.src = `./imgs/Melee (${this.p}).png`;
     }
 }
 
