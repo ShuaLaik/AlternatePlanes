@@ -1,7 +1,29 @@
 # Alternate Planes
 
+[Link to Game](https://shualaik.github.io/AlternatePlanes/)
 
 Let's set the scene. Your scientist on a distant planet, finding himself in the trecherous situation of being seperated from his ship. The planet is vastly unsafe, but you have an advantage. In your disposal is your plane shifter, capable of shifting you to an alternate reality where obstacles may be passed. So, do you have what it takes to make it back to your ship?
+
+- Canvas API
+
+
+### Controls
+- A - Move Left
+- D - Move Right
+- Q - Change Planes
+- SpaceBar - Jump
+
+##GamePlay
+
+![MainScreenshot](imgs/readme/Screen Shot 2021-12-09 at 10.31.11 AM.png)
+
+Users must find there way through an array of puzzle levels to make it to the otherside. Some parts of the level may only appear in one universe vs the other. User's must use this to their advantage and navigate the level.
+
+For example, these are of the same level:
+
+
+
+
 
 #### In Alternate Planes, users will be able to:
 - Navigate levels and advance towards end goal
