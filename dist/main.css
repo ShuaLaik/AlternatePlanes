@@ -137,19 +137,20 @@ h5 {
   color: blue;
 }
 
-a > img{
-  width: 20px;
-  height: 20px;
-  padding: 0px 0px 0px 0px;
-}
-a > img:hover{
+a img:hover {
   background-color: white;
   border-radius: 50%;
 }
-a > #music{
-  width: 23px;
-  height: 23px;
+a img {
+  padding: 0px;
+  height: 20px;
+  width: 20px;
 }
-ul > li {
-  padding-right: 4px;
+a #music {
+  height: 22px;
+  width: 22px;
+}
+
+ul li {
+  padding-right: 3px;
 }
