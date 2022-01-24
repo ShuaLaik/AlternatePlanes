@@ -1,6 +1,6 @@
 class Sound {
     constructor(){
-        this.src = "../Music/blip-stream-kevin-macleod-main-version-04-44-7998.mp3"
+        this.src = "./Music/blip-stream-kevin-macleod-main-version-04-44-7998.mp3"
         this.music = document.createElement("audio");
         this.music.src = this.src;
         this.music.setAttribute("preload", "auto");
