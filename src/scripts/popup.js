@@ -41,7 +41,7 @@ class PopUp {
         this.lfiveh.innerText = "M"
         this.lfivep.innerText = " - Mute/Unmute Music"
         this.lfive.append(this.lfiveh, this.lfivep);
-        this.ul.append(this.lone, this.ltwo, this.lthree, this.lfour)
+        this.ul.append(this.lone, this.ltwo, this.lthree, this.lfour, this.lfive)
         this.h = document.createElement('h3');
         this.h.innerText = "Welcome to Alternate Planes!";
         this.p = document.createElement('p');
