@@ -5,6 +5,7 @@ const PopUp = require("./scripts/popup");
 
 document.addEventListener("DOMContentLoaded", () => {
     const pop = new PopUp;
+    const help = document.getElementById('help');
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
     let musicPlaying = true;
@@ -16,6 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     pop.section.addEventListener('click', (event) => {
         pop.section.style.display = "none";
+    })
+    help.addEventListener('click', event => {
+        pop.section.style.display = "flex";
     })
 
     document.addEventListener('keydown', (event) => { //detects all key down events

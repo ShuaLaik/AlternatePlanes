@@ -60,7 +60,7 @@ body {
   top: 30%;
   background-color: darkgrey;
   border: 4px solid black;
-  border-radius: 5%;
+  border-radius: 16px;
   width: 60%;
 }
 
@@ -137,6 +137,9 @@ h5 {
   color: blue;
 }
 
+a {
+  border-radius: 50%;
+}
 a img:hover {
   background-color: white;
   border-radius: 50%;
@@ -149,6 +152,13 @@ a img {
 a #music {
   height: 22px;
   width: 22px;
+}
+a #help {
+  height: 22px;
+  width: 22px;
+}
+a #help:hover {
+  cursor: pointer;
 }
 
 ul li {

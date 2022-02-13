@@ -17,6 +17,7 @@ class Game {
         this.fadeIn = false;
         this.fadeamount = 0.05;
         this.levEnd = 1;
+        this.win = 0;
     }
 
     static createPlayer(obj, x, y, w, h, ctx){//creates a new player object
@@ -27,8 +28,15 @@ class Game {
 
     draw(ctx) {//overall renderloop
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        if (this.player.y > 1000){
-            this.dead(ctx);
+        if (((this.player.x > 800 && this.player.y > 200) && this.currLevel >= 2) || this.win === 1){
+            this.onScreen(ctx, "WIN");
+            this.win = 1;
+            if (this.ticker(235)){
+                return false;
+            };
+        }
+        if (this.player.y > 1000 && this.win !== 1){
+            this.onScreen(ctx, "DEAD");
             if (this.ticker(235)){
                 return false;
             };
@@ -83,10 +91,10 @@ class Game {
         }
     }
 
-    dead(ctx){ //renders dead on screen
+    onScreen(ctx, message){ //renders dead on screen
         ctx.fillStyle = "red";
         ctx.font = "300px Ariel";
-        ctx.fillText("DEAD", 30, 300);
+        ctx.fillText(message, 30, 300);
     }
 
     ticker(max){ //utiltiy to wait a certain amount of time before completeing an action
