@@ -28,6 +28,14 @@ class Game {
 
     draw(ctx) {//overall renderloop
         ctx.clearRect(0, 0, canvas.width, canvas.height);
+                this.levels[this.currLevel].concat(this.player).forEach((e) => {
+            e.draw(ctx, this.hidden)
+        })
+        if (this.hidden === 1) {
+            ctx.fillStyle = 'rgba(22,60,210,0.3)';
+            ctx.fillRect(0, 0, 900, 506, 0.1)
+            ctx.stroke();
+        }
         if (((this.player.x > 800 && this.player.y > 200) && this.currLevel >= 2) || this.win === 1){
             this.onScreen(ctx, "WIN");
             this.win = 1;
@@ -41,37 +49,32 @@ class Game {
                 return false;
             };
         }
-        else {
-        this.player.y += 15;//gravity
-        if ((this.player.x > 850 && this.currLevel < this.levels.length - 1) || (this.currLevel === 0 && this.player.x < 2)) {
-            this.currLevel += 1;//this checks if the player ran off screen and takes them to previous or next level accordingly
-            this.player.x = 0;
-            this.player.y = 200;
-            this.levEnd = -200;
-            this.hidden = -1;
-        } else if (this.player.x < 0 && this.currLevel !== 1) {
-            this.currLevel -= 1;
-            this.player.x = 5;
-            this.player.y = 200;
-            this.levEnd = -200;
-            this.hidden = -1;
-        }  
-        if (this.player.jump === true){
-            this.jump()
-            this.player.jumpAnimation();
-        } else {
-            this.gravity();
-        }
-            this.playerMove();
+        if (this.win !== 1) {
+            this.player.y += 15;//gravity
+            if ((this.player.x > 850 && this.currLevel < this.levels.length - 1) || (this.currLevel === 0 && this.player.x < 2)) {
+                this.currLevel += 1;//this checks if the player ran off screen and takes them to previous or next level accordingly
+                this.player.x = 0;
+                this.player.y = 200;
+                this.levEnd = -200;
+                this.hidden = -1;
+            } else if (this.player.x < 0 && this.currLevel !== 1) {
+                this.currLevel -= 1;
+                this.player.x = 5;
+                this.player.y = 200;
+                this.levEnd = -200;
+                this.hidden = -1;
+            }  
+            if (this.player.jump === true){
+                this.jump()
+                this.player.jumpAnimation();
+            } else {
+                this.gravity();
+            }
+            if (this.win === 0){
+                this.playerMove();
+            }
         };
-        this.levels[this.currLevel].concat(this.player).forEach((e) => {
-            e.draw(ctx, this.hidden)
-        })
-        if (this.hidden === 1) {
-            ctx.fillStyle = 'rgba(22,60,210,0.1)';
-            ctx.fillRect(0, 0, 900, 506, 0.1)
-            ctx.stroke();
-        }
+
         return true;
     }
 
