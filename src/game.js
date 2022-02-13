@@ -28,7 +28,7 @@ class Game {
 
     draw(ctx) {//overall renderloop
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-                this.levels[this.currLevel].concat(this.player).forEach((e) => {
+        this.levels[this.currLevel].concat(this.player).forEach((e) => {
             e.draw(ctx, this.hidden)
         })
         if (this.hidden === 1) {
@@ -43,7 +43,7 @@ class Game {
                 return false;
             };
         }
-        
+
         if (this.player.y > 1000 && this.win !== 1){
             this.onScreen(ctx, "DEAD");
             if (this.ticker(235)){
