@@ -43,6 +43,7 @@ class Game {
                 return false;
             };
         }
+        
         if (this.player.y > 1000 && this.win !== 1){
             this.onScreen(ctx, "DEAD");
             if (this.ticker(235)){
